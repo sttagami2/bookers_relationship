@@ -31,7 +31,37 @@ class UsersController < ApplicationController
 		else
   		render :edit
   	end
-  end
+	end
+	
+	def following
+		@user = User.find(params[:id])
+		@users = @user.followings
+		@book = Book.new
+		@books = Book.all
+		redirect_to :follow
+	end
+
+	def followers
+		@user = User.find(params[:id])
+		@users = @user.followers
+		@book = Book.new
+		@books = Book.all
+		redirect_to :follower
+	end
+
+	def follow
+		@user = User.find(params[:id])
+		@users = @user.followings
+		@book = Book.new
+		@books = Book.all
+	end
+
+	def follower
+		@user = User.find(params[:id])
+		@users = @user.followers
+		@book = Book.new
+		@books = Book.all
+	end
 
   private
   def user_params
